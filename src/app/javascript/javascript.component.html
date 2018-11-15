@@ -2,7 +2,7 @@
 
 <p>Result</p>
 
-<div id="demo"></div>
+<div id="demo" #demoDiv1></div>
 
 <p>document</p>
 
@@ -24,7 +24,7 @@
 <br>
 <button class="btn btn-success" type="button" onclick="document.write('document.write')"> document.write</button>
 <br>
-<h1 id="demo2"></h1>
+<h1 id="demo2" #demoDiv2></h1>
 <br>
 <p>call function</p>
 
@@ -97,7 +97,7 @@ Reault : {{myFunction10(14,2,"Add1")}}
  <br>
  <br>
 
- <div id="demo3"></div>
+ <div id="demo3" #demoDiv3></div>
  <br>
 
   <button class="btn btn-success" (click)="myFunction11()"> inserts a double quote in a string </button>
@@ -120,7 +120,7 @@ Reault : {{myFunction10(14,2,"Add1")}}
 
 
 <p>JavaScript String Methods</p>
-<div id="demo4"></div>
+<div id="demo4" #demoDiv4></div>
  <button class="btn btn-success" (click)="myFunction14()"> length -  ABCDEFGHIJKLMNOPQRSTUVWXYZ </button> 
  <br>
  <button class="btn btn-success" (click)="myFunction15()"> indexOf - Please locate where 'locate' occurs!</button>
@@ -154,7 +154,7 @@ Reault : {{myFunction10(14,2,"Add1")}}
  <button class="btn btn-success" (click)="myFunction29()">split</button>
 
  <p>JavaScript Number Methods</p>
- <div id="demo5"></div>
+ <div id="demo5" #demoDiv5></div>
 
  <button class="btn btn-success" (click)="myFunction30()">toFixed  9.656</button>
 <br>
@@ -168,7 +168,7 @@ parseFloat
 <br> 
 <button class="btn btn-success" (click)="myFunction33()">parseInt Convert To No </button>
 <p>JavaScript Arrays</p>
-<div id="demo6"></div>
+<div id="demo6" #demoDiv6></div>
 
 <button class="btn btn-success" (click)="myFunction34()">Arrays </button>
  <br>

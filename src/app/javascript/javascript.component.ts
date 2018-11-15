@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-javascript',
@@ -8,85 +7,70 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JavascriptComponent implements OnInit {
   Title_Java = 'Javascript';
+  @ViewChild("demoDiv1") demoElm1: ElementRef;
+  @ViewChild("demoDiv2") demoElm2: ElementRef;
+  @ViewChild("demoDiv3") demoElm3: ElementRef;
+  @ViewChild("demoDiv4") demoElm4: ElementRef;
+  @ViewChild("demoDiv5") demoElm5: ElementRef;
+  @ViewChild("demoDiv6") demoElm6: ElementRef;
 
   constructor() {
   }
 
   ngOnInit() {
-    document.getElementById("demo2").innerHTML = "ngOnInit";
+    this.demoElm1.nativeElement.innerHTML = 'ngOnInit';
 
-
-
-    var pi = 3.14;
-    var person = "John Doe";
-    var answer = 'Yes I am!';
-    document.getElementById("demo").innerHTML = pi + "<br>" + person + "<br>" + answer + "<br>" + "<h1>Mohamed </h1>";
+    const pi = Math.PI; // 3.14; 
+    const person = "John Doe";
+    const answer = 'Yes I am!';
+    this.demoElm1.nativeElement.innerHTML = pi + "<br>" + person + "<br>" + answer + "<br>" + "<h1>Mohamed </h1>";
   }
-
-
   myFunction() {
-    document.getElementById('demo').innerHTML = 'call my function';
+    this.demoElm1.nativeElement.innerHTML = 'call my function';
   }
-
-
   myFunction2() {
-    var x, y, z;  // Statement 1
+    let x, y, z;  // Statement 1
     x = 5;        // Statement 2
     y = 6;        // Statement 3
     z = x + y;    // Statement 4
-
-    document.getElementById("demo").innerHTML = "The value of z is " + z + ".";
+    this.demoElm1.nativeElement.innerHTML = "The value of z is " + z + ".";
   }
-
-
-
-
   myFunction3() {
-    var x, y, z;  // Statement 1
+    let x, y, z;  // Statement 1
     x = 10;
     y = 20;
     document.write(x + y);
   }
-
   myFunction4() {
-    var carName;
-    document.getElementById("demo").innerHTML = carName;
+    let carName;
+    this.demoElm1.nativeElement.innerHTML = carName;
   }
-
-
   myFunction5() {
-    var answer1 = "It's alright";
-    var answer2 = "He is called 'Johnny'";
-    var answer3 = 'He is called "Joh  nny"';
+    const answer1 = "It's alright";
+    const answer2 = "He is called 'Johnny'";
+    const answer3 = 'He is called "Joh  nny"';
 
-    document.getElementById("demo").innerHTML =
-      answer1 + "<br>" +
-      answer2 + "<br>" +
-      answer3;
+    this.demoElm1.nativeElement.innerHTML = `${answer1} <br> ${answer2} <br> ${answer3}`;
   }
-
   myFunction6() {
-    var cars = ["Saab", "Volvo", "BMW"];
+    const cars = ["Saab", "Volvo", "BMW"];
 
-    document.getElementById("demo").innerHTML = cars[0] + "-" + cars[2];
+    this.demoElm1.nativeElement.innerHTML = cars[0] + "-" + cars[2];
     /*مفهوم المصفوفات
     مصفوفة: تعني Array في البرمجة.   المصفوفة عبارة عن كائن يحتوي مجموعة عناصر من نفس النوع تتخزن بجوار بعضها في الذاكرة.
     بمعنى آخر المصفوفة عبارة عن كائن يمكنه تخزين عدة قيم من نفس النوع.
     عناصر المصفوفة تتميز عن بعضها من خلال رقم محدد يعطى لكل عنصر يسمى index. أول عنصر فيها يتم تخزينه في الـ index رقم 0.
     عدد عناصر المصفوفة ثابت, أي بمجرد أن قمت بتحديده لا يمكنك تغييره من جديد, لكنك تستطيع تغيير قيم هذه العناصر متى شئت */
   }
-
-
-
   myFunction7() {
-
-    var person = {
+    const person = {
       firstName: "John",
       lastName: "Doe",
       age: 50,
       eyeColor: "blue"
     };
-    document.getElementById("demo").innerHTML = person.firstName + " is " + person.age + " years old.";
+    this.demoElm1.nativeElement.innerHTML = person.firstName + " is " + person.age + " years old.";
+
     /* 
    مفهوم Object
    (Object) كل شيء عبارة عن كائن 
@@ -105,7 +89,7 @@ export class JavascriptComponent implements OnInit {
    تدعم لغة Java مفهوم Object Oriented Programming، وهذا يعني أنها لغة تتعامل 
    بمفهومClasses و Objects، ولكي نعرف الكمبيوتر بشكل كائن ما و تفاصيله، لابد لنا من إنشاء Classيشرح 
    تلك التفاصيل، والكائنات التي ستنتج منه تتكون من خصائص Attributes وأفعالActions، وعندما نأتي إلى 
-   الخصائص Attributes فإنه سيتم تمثيلها بما يسمى المتغيراتVariables برمجياً، وعندما نأتي إلى 
+   الخصائص Attributes فإنه سيتم تمثيلها بما يسمى المتغيراتconstiables برمجياً، وعندما نأتي إلى 
    الأفعال Actions فإنه سيتم تمثيلها كذلك برمجياً بما يسمى الدوال Functions أو Methods.
    
    class Person {
@@ -121,14 +105,21 @@ export class JavascriptComponent implements OnInit {
     */
 
   }
-
-
   myFunction8() {
-    var x;
-    var person = { firstName: "John", lastName: "Doe", age: 50, eyeColor: "blue" };
+    let x;
+    const person = { firstName: "John", lastName: "Doe", age: 50, eyeColor: "blue" };
     //person = null;
 
-    document.getElementById("demo").innerHTML =
+    // document.getElementById("demo").innerHTML =
+    //   typeof "" + "<br>" +
+    //   typeof "John" + "<br>" +
+    //   typeof 10 + "<br>" +
+    //   typeof 3.14 + "<br>" +
+    //   typeof true + "<br>" +
+    //   typeof function myFunc() { } + "<br>" +
+    //   typeof x + "<br>" +
+    //   typeof person;
+    this.demoElm1.nativeElement.innerHTML =
       typeof "" + "<br>" +
       typeof "John" + "<br>" +
       typeof 10 + "<br>" +
@@ -137,8 +128,6 @@ export class JavascriptComponent implements OnInit {
       typeof function myFunc() { } + "<br>" +
       typeof x + "<br>" +
       typeof person;
-
-
   }
 
   myFunction9(p1, p2) {
@@ -146,360 +135,280 @@ export class JavascriptComponent implements OnInit {
   }
 
   myFunction10(p1, p2, t) {
-
-    if (t == "Add") {
-
+    if (t == "Add")
       return p1 + p2;
-
-    }
-    else {
-
+    else
       return p1 * p2;
-
-
-    }
   }
-
-
-
-
   myFunction11() {
-
-    var x = "We are the so-called \"Vikings\" from the north.";
-    document.getElementById("demo3").innerHTML = x;
-
-
+    const x = "We are the so-called \"Vikings\" from the north.";
+    this.demoElm3.nativeElement.innerHTML = x;
   }
-
   myFunction12() {
-    var x = 'It\'s alright.';
-    document.getElementById("demo3").innerHTML = x;
+    const x = 'It\'s alright.';
+    this.demoElm3.nativeElement.innerHTML = x;
   }
-
   myFunction13() {
-    var x = "The character \\ is called backslash.";
-    document.getElementById("demo3").innerHTML = x;
+    const x = "The character \\ is called backslash.";
+    this.demoElm3.nativeElement.innerHTML = x;
   }
-
   myFunction14() {
-    var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    document.getElementById("demo4").innerHTML = txt.length.toString();
+    const txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    this.demoElm4.nativeElement.innerHTML = txt.length.toString();
   }
-
   myFunction15() {
-
-    var str = "Please locate where 'locate' occurs!";
-    var pos = str.indexOf("locate");
-    document.getElementById("demo4").innerHTML = pos.toString();
+    const str = "Please locate where 'locate' occurs!";
+    const pos = str.indexOf("locate");
+    this.demoElm4.nativeElement.innerHTML = pos.toString();
   }
   myFunction16() {
-
-    var str = "Please locate where 'locate' occurs!";
-    var pos = str.lastIndexOf("locate");
-    document.getElementById("demo4").innerHTML = pos.toString();
+    const str = "Please locate where 'locate' occurs!";
+    const pos = str.lastIndexOf("locate");
+    this.demoElm4.nativeElement.innerHTML = pos.toString();
   }
   myFunction17() {
-
-    var str = "Apple, Banana, Kiwi";
-    var res = str.slice(-12, -6);
-    document.getElementById("demo4").innerHTML = res;
+    const str = "Apple, Banana, Kiwi";
+    const res = str.slice(-12, -6);
+    this.demoElm4.nativeElement.innerHTML = res;
   }
-
   myFunction18() {
-
-    var str = "Apple, Banana, Kiwi";
-    var res = str.substr(7, 6);
-    document.getElementById("demo4").innerHTML = res;
+    const str = "Apple, Banana, Kiwi";
+    const res = str.substr(7, 6);
+    this.demoElm4.nativeElement.innerHTML = res;
   }
-
-
   myFunction19() {
-    var str = "Apple, Banana, Kiwi";
-    var res = str.substr(-4);
-    document.getElementById("demo4").innerHTML = res;
+    const str = "Apple, Banana, Kiwi";
+    const res = str.substr(-4);
+    this.demoElm4.nativeElement.innerHTML = res;
   }
-
-
-
   myFunction20() {
-    var str = document.getElementById("demo4").innerHTML;
-    var txt = str.replace("Kiwi", "Kiwi Kiwi Kiwi");
-    document.getElementById("demo4").innerHTML = txt;
+    const str = this.demoElm4.nativeElement.innerHTML;
+    const txt = str.replace("Kiwi", "Kiwi Kiwi Kiwi");
+    this.demoElm4.nativeElement.innerHTML = txt;
   }
-
   myFunction21() {
-    var str = "Microsoft Please visit Microsoft and Microsoft ";
-    var txt = str.replace(/Microsoft/g, "MM");
-    document.getElementById("demo4").innerHTML = txt;
+    const str = "Microsoft Please visit Microsoft and Microsoft ";
+    const txt = str.replace(/Microsoft/g, "MM");
+    this.demoElm4.nativeElement.innerHTML = txt;
   }
-
-
   myFunction22() {
-    var text = document.getElementById("demo4").innerHTML;
-    document.getElementById("demo4").innerHTML = text.toUpperCase();
+    const text = this.demoElm4.nativeElement.innerHTML;
+    this.demoElm4.nativeElement.innerHTML = text.toUpperCase();
   }
   myFunction23() {
-    var text = document.getElementById("demo4").innerHTML;
-    document.getElementById("demo4").innerHTML = text.toLowerCase();
-
+    const text = this.demoElm4.nativeElement.innerHTML;
+    this.demoElm4.nativeElement.innerHTML = text.toLowerCase();
   }
   myFunction24() {
-    var text1 = "Mohamed";
-    var text2 = "Abu Saif";
-    var text3 = text1.concat(" Mostafa ", text2);
-    document.getElementById("demo4").innerHTML = text3;
+    const text1 = "Mohamed";
+    const text2 = "Abu Saif";
+    const text3 = text1.concat(" Mostafa ", text2);
+    this.demoElm4.nativeElement.innerHTML = text3;
   }
   myFunction25() {
-    var str = "X       Hello    World!       X";
-    document.getElementById("demo4").innerHTML = str.trim();
-
+    const str = "X       Hello    World!       X";
+    this.demoElm4.nativeElement.innerHTML = str.trim();
   }
   myFunction26() {
-    var str = "HELLO WORLD";
-    document.getElementById("demo4").innerHTML = str.charAt(0);
-
+    const str = "HELLO WORLD";
+    this.demoElm4.nativeElement.innerHTML = str.charAt(0);
   }
   myFunction27() {
-    var str = "HELLO WORLD";
-    document.getElementById("demo4").innerHTML = str.charCodeAt(0).toString();
+    const str = "HELLO WORLD";
+    this.demoElm4.nativeElement.innerHTML = str.charCodeAt(0).toString();
   }
   myFunction28() {
-    var str = "HELLO WORLD";
-    document.getElementById("demo4").innerHTML = str[0];
+    const str = "HELLO WORLD";
+    this.demoElm4.nativeElement.innerHTML = str[0];
   }
-
   myFunction29() {
-    var str = "Hello";
-    var arr = str.split("");
-    var text = "";
-    var i;
-    for (i = 0; i < arr.length; i++) {
+    const str = "Hello";
+    const arr = str.split("");
+    let text = "";
+
+    for (let i = 0; i < arr.length; i++) {
       text += arr[i] + "<br>"
     }
-    document.getElementById("demo4").innerHTML = text;
+    this.demoElm4.nativeElement.innerHTML = text;
   }
-
-
   myFunction30() {
-    var x = 9.656;
-    document.getElementById("demo5").innerHTML =
-      x.toFixed(0) + "<br>" +
-      x.toFixed(2) + "<br>" +
-      x.toFixed(4) + "<br>" +
-      x.toFixed(6);
+    const x = 9.656;
+    this.demoElm5.nativeElement.innerHTML =
+    x.toFixed(0) + "<br>" +
+    x.toFixed(2) + "<br>" +
+    x.toFixed(4) + "<br>" +
+    x.toFixed(6);
   }
-
-
   myFunction31() {
-    var x = 9.656;
-    document.getElementById("demo5").innerHTML =
-      x.toPrecision() + "<br>" +
-      x.toPrecision(2) + "<br>" +
-      x.toPrecision(4) + "<br>" +
-      x.toPrecision(6);
+    const x = 9.656;
+    this.demoElm5.nativeElement.innerHTML =
+    x.toPrecision() + "<br>" +
+    x.toPrecision(2) + "<br>" +
+    x.toPrecision(4) + "<br>" +
+    x.toPrecision(6);
   }
-
   myFunction32() {
-    var x = new Date("2017-09-30");
-    document.getElementById("demo5").innerHTML = Number(x).toString();
+    const x = new Date("2017-09-30");
+    this.demoElm5.nativeElement.innerHTML = Number(x).toString();
   }
-
   myFunction33() {
-    document.getElementById("demo5").innerHTML =
-      parseInt("10") + "<br>" +
-      parseInt("10.33") + "<br>" +
-      parseInt("10 6") + "<br>" +
-      parseInt("10 years") + "<br>" +
-      parseInt("years 10");
+    this.demoElm5.nativeElement.innerHTML =
+    parseInt("10") + "<br>" +
+    parseInt("10.33") + "<br>" +
+    parseInt("10 6") + "<br>" +
+    parseInt("10 years") + "<br>" +
+    parseInt("years 10");
   }
-
   myFunction34() {
-    var cars = ["Saab", "Volvo", "BMW"];
-    document.getElementById("demo6").innerHTML = cars.toString();
+    const cars = ["Saab", "Volvo", "BMW"];
+    this.demoElm6.nativeElement.innerHTML = cars.toString();
   }
   myFunction35() {
-    var cars = ["Saab", "Volvo", "BMW"];
+    let cars = ["Saab", "Volvo", "BMW"];
     cars[0] = "Opel";
-    document.getElementById("demo6").innerHTML = cars.toString();
+    this.demoElm6.nativeElement.innerHTML = cars.toString();
   }
-
   myFunction36() {
-    var person = { firstName: "John", lastName: "Doe", age: 46 };
-    document.getElementById("demo6").innerHTML = person["firstName"];
+    const person = { firstName: "John", lastName: "Doe", age: 46 };
+    this.demoElm6.nativeElement.innerHTML = person["firstName"];
   }
-
   myFunction37() {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
-    var last = fruits[fruits.length - 1];
-    document.getElementById("demo6").innerHTML = last;
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    const last = fruits[fruits.length - 1];
+    this.demoElm6.nativeElement.innerHTML = last;
   }
-
   myFunction38() {
-    var fruits, text, fLen, i;
+    let fruits, text, fLen, i;
     fruits = ["Banana", "Orange", "Apple", "Mango"];
     fLen = fruits.length;
 
     text = "<ul>";
-    for (i = 0; i < fLen; i++) {
+    for (i = 0; i < fLen; i++)
       text += "<li>" + fruits[i] + "</li>";
-    }
+    
     text += "</ul>";
-
-    document.getElementById("demo6").innerHTML = text;
+    this.demoElm6.nativeElement.innerHTML = text;
   }
-
-
   myFunction39() {
-    var fruits, text;
+    let fruits, text;
     fruits = ["Banana", "Orange", "Apple", "Mango"];
 
     text = "<ul>";
     fruits.forEach(myFunction);
     text += "</ul>";
-    document.getElementById("demo6").innerHTML = text;
+    this.demoElm6.nativeElement.innerHTML = text;
 
-    function myFunction(value) {
+    function myFunction(value) { //ECMA 5
       text += "<li>" + value + "</li>";
     }
-
   }
-
-
-
   myFunction40() {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
-
+    let fruits = ["Banana", "Orange", "Apple", "Mango"];
     fruits.push("Lemon");
-    // fruits[fruits.length] = "Lemon";
-    document.getElementById("demo6").innerHTML = fruits.toString();
-
-
+    this.demoElm6.nativeElement.innerHTML = fruits.toString();
   }
-
   myFunction41() {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
-    document.getElementById("demo6").innerHTML = Array.isArray(fruits).toString();
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    this.demoElm6.nativeElement.innerHTML = Array.isArray(fruits).toString();
   }
 
-  /* var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  /* const fruits = ["Banana", "Orange", "Apple", "Mango"];
    document.getElementById("demo").innerHTML = isArray(fruits);
    
    function isArray(myArray) {
        return myArray.constructor.toString().indexOf("Array") > -1;
    } */
-
-
   myFunction42() {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
-    document.getElementById("demo6").innerHTML = fruits.join(" * ");
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    this.demoElm6.nativeElement.innerHTML = fruits.join(" * ");
   }
-
   myFunction43() {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    let fruits = ["Banana", "Orange", "Apple", "Mango"];
     fruits.pop();
-    document.getElementById("demo6").innerHTML = fruits.toString();
+    this.demoElm6.nativeElement.innerHTML = fruits.toString();
   }
-
   myFunction44() {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    let fruits = ["Banana", "Orange", "Apple", "Mango"];
     fruits.shift();
-    document.getElementById("demo6").innerHTML = fruits.toString();
+    this.demoElm6.nativeElement.innerHTML = fruits.toString();
   }
   /*
-  var fruits = ["Banana", "Orange", "Apple", "Mango"];
+  const fruits = ["Banana", "Orange", "Apple", "Mango"];
   document.getElementById("demo1").innerHTML = fruits;
   document.getElementById("demo2").innerHTML = fruits.shift();
   document.getElementById("demo3").innerHTML = fruits;
   */
-
   myFunction45() {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
-
+    let fruits = ["Banana", "Orange", "Apple", "Mango"];
     fruits.unshift("Lemon");
-    document.getElementById("demo6").innerHTML = fruits.toString();
-
+    this.demoElm6.nativeElement.innerHTML = fruits.toString();
   }
   myFunction46() {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    let fruits = ["Banana", "Orange", "Apple", "Mango"];
     fruits.splice(2, 0, "Lemon", "Kiwi");
-    document.getElementById("demo6").innerHTML = fruits.toString();
+    this.demoElm6.nativeElement.innerHTML = fruits.toString();
   }
   /*fruits.splice(2, 2, "Lemon", "Kiwi");
   fruits.splice(0, 1);        // Removes the first element of fruits*/
   myFunction47() {
-    var myGirls = ["Cecilie", "Lone"];
-    var myBoys = ["Emil", "Tobias", "Linus"];
-    var myChildren = myGirls.concat(myBoys);
-    document.getElementById("demo6").innerHTML = myChildren.toString();
+    const myGirls = ["Cecilie", "Lone"];
+    const myBoys = ["Emil", "Tobias", "Linus"];
+    const myChildren = myGirls.concat(myBoys);
+    this.demoElm6.nativeElement.innerHTML = myChildren.toString();
   }
-
   myFunction48() {
-    var arr1 = ["Cecilie", "Lone"];
-    var arr2 = ["Emil", "Tobias", "Linus"];
-    var arr3 = ["Robin", "Morgan"];
-    var myChildren = arr1.concat(arr2, arr3);
-    document.getElementById("demo6").innerHTML = myChildren.toString();
+    const arr1 = ["Cecilie", "Lone"];
+    const arr2 = ["Emil", "Tobias", "Linus"];
+    const arr3 = ["Robin", "Morgan"];
+    const myChildren = arr1.concat(arr2, arr3);
+    this.demoElm6.nativeElement.innerHTML = myChildren.toString();
   }
   myFunction49() {
-    var arr1 = ["Cecilie", "Lone"];
-    var myChildren = arr1.concat(["Emil", "Tobias", "Linus"]);
-    document.getElementById("demo6").innerHTML = myChildren.toString();
-
+    const arr1 = ["Cecilie", "Lone"];
+    const myChildren = arr1.concat(["Emil", "Tobias", "Linus"]);
+    this.demoElm6.nativeElement.innerHTML = myChildren.toString();
   }
-
   myFunction50() {
-    var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
-    var citrus = fruits.slice(3);
-    //var citrus = fruits.slice(1,3);
-
-    document.getElementById("demo6").innerHTML = fruits + "<br><br>" + citrus;
+    const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+    const citrus = fruits.slice(3);
+    this.demoElm6.nativeElement.innerHTML = fruits + "<br><br>" + citrus;
   }
-
   myFunction51() {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    let fruits = ["Banana", "Orange", "Apple", "Mango"];
     fruits.sort();
-    document.getElementById("demo6").innerHTML = fruits.toString();
+    this.demoElm6.nativeElement.innerHTML = fruits.toString();
   }
   myFunction52() {
-    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    let fruits = ["Banana", "Orange", "Apple", "Mango"];
     fruits.sort();
     fruits.reverse();
-    document.getElementById("demo6").innerHTML = fruits.toString();
- 
+    this.demoElm6.nativeElement.innerHTML = fruits.toString();
   }
   myFunction53() {
-    var points = [40, 100, 1, 5, 25, 10];
+    let points = [40, 100, 1, 5, 25, 10];
     points.sort(function(a, b){return a - b});
-    document.getElementById("demo6").innerHTML = points.toString();
+    this.demoElm6.nativeElement.innerHTML = points.toString();
   }
-
   myFunction54() {
-    var points = [40, 100, 1, 5, 25, 10];
+    let points = [40, 100, 1, 5, 25, 10];
     points.sort(function(a, b){return b - a});
-    document.getElementById("demo6").innerHTML = points.toString();
+    this.demoElm6.nativeElement.innerHTML = points.toString();
   }
-
   myFunction55() {
-    var points = [40, 100, 1, 5, 25, 10];
+    let points = [40, 100, 1, 5, 25, 10];
     points.sort(function(a, b){return 0.5 - Math.random()});
-    document.getElementById("demo6").innerHTML = points.toString();
- 
+    this.demoElm6.nativeElement.innerHTML = points.toString();
   }
-
-    myFunction56() {
-      var points = [40, 100, 1, 5, 25, 10];
-      points.sort(function(a, b){return a-b});
-      document.getElementById("demo6").innerHTML = points[0].toString();
- 
+  myFunction56() {
+    let points = [40, 100, 1, 5, 25, 10];
+    points.sort(function(a, b){return a-b});
+    this.demoElm6.nativeElement.innerHTML = points[0].toString();
   }
   myFunction57() {
-    var points = [40, 100, 1, 5, 25, 10];
-    points.sort(function(a, b){return b-a});
-    document.getElementById("demo6").innerHTML = points[0].toString();
-
-}
-
-
+    let points = [40, 100, 1, 5, 25, 10];
+    points.sort((a, b) => {return b-a});
+    this.demoElm6.nativeElement.innerHTML = points[0].toString();
+  }
 }
 
 
